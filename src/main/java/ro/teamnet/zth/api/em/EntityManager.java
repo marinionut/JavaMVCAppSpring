@@ -36,7 +36,7 @@ public interface EntityManager {
      * @param <T>
      * @return
      */
-    <T> T findById(Class<T> entityClass, Integer id);
+    <T> T findById(Class<T> entityClass, Object id);
 
     /**
      *

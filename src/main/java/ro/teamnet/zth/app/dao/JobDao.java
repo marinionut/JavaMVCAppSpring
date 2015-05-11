@@ -49,7 +49,7 @@ public class JobDao {
      * @param id
      * @return job object
      */
-    public Job getJobById(Integer id) {
+    public Job getJobById(String id) {
         return entityManager.findById(Job.class, id);
     }
 

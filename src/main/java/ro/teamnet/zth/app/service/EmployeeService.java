@@ -5,19 +5,12 @@ import ro.teamnet.zth.app.domain.Employee;
 import java.util.List;
 
 /**
- * @author andreeaf
- * @since 5/10/2015 12:49 PM
+ * Created by Ionutz on 07.05.2015.
  */
 public interface EmployeeService {
-
-    Employee findOne(Integer idEmployee);
-
     List<Employee> findAll();
-
-    Employee create(Employee employee);
-
-    Employee update(Employee employee);
-
-    void delete(Integer idEmployee);
-
+    Employee findOne(Integer id);
+    void create(Employee e);
+    void update(Employee e);
+    void delete(Integer id);
 }

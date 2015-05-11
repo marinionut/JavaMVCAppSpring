@@ -5,7 +5,19 @@
 <web-app>
     <display-name>Awesome MVC Framework</display-name>
 
-    <!--Configurare Spring-->
+    <!--Configurare servleti-->
+    <!-- Servletul meu: MyDispatcherSerlvet
+    <servlet>
+        <servlet-name>MyDispatcherServlet</servlet-name>
+        <description>MVC DispatcherServlet</description>
+        <servlet-class>ro.teamnet.zth.app.MyDispatcherServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MyDispatcherServlet</servlet-name>
+        <url-pattern>/mvc/*</url-pattern>
+    </servlet-mapping>
+    -->
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -17,16 +29,20 @@
             org.springframework.web.context.ContextLoaderListener
         </listener-class>
     </listener>
+
     <servlet>
-        <servlet-name>mvc-dispatcher</servlet-name>
-        <servlet-class>
-            org.springframework.web.servlet.DispatcherServlet
-        </servlet-class>
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/mvc-dispatcher-servlet.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>mvc-dispatcher</servlet-name>
+        <servlet-name>Spring MVC Dispatcher Servlet</servlet-name>
         <url-pattern>/mvc/*</url-pattern>
     </servlet-mapping>
 

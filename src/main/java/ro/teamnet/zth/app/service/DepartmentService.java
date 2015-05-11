@@ -5,19 +5,12 @@ import ro.teamnet.zth.app.domain.Department;
 import java.util.List;
 
 /**
- * @author andreeaf
- * @since 5/10/2015 12:49 PM
+ * Created by Ionutz on 11.05.2015.
  */
 public interface DepartmentService {
-
-    Department findOne(Integer idDepartment);
-
     List<Department> findAll();
-
-    Department create(Department department);
-
-    Department update(Department department);
-
-    void delete(Integer idDepartment);
-
+    Department findOne(Integer id);
+    void create(Department d);
+    void update(Department d);
+    void delete(Integer id);
 }

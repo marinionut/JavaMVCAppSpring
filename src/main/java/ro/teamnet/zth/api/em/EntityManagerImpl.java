@@ -127,7 +127,7 @@ public class EntityManagerImpl implements EntityManager {
     }
 
     @Override
-    public <T> T findById(Class<T> entityClass, Integer id) {
+    public <T> T findById(Class<T> entityClass, Object id) {
         try (Connection conn = DBManager.getConnection();
              Statement stmt = conn.createStatement()) {
 
@@ -171,6 +171,7 @@ public class EntityManagerImpl implements EntityManager {
             query.setTableName(tableName).addQueryColumns(columns).setQueryType(QueryType.SELECT);
             String sql = query.createQuery();
             ResultSet rs = stmt.executeQuery(sql);
+
 
             while (rs.next()) {
                 T instance = entityClass.newInstance();

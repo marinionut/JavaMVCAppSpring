@@ -1,49 +1,64 @@
 package ro.teamnet.zth.app.controller;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ro.teamnet.zth.app.domain.Location;
 import ro.teamnet.zth.app.service.LocationService;
-import ro.teamnet.zth.app.service.impl.LocationServiceImpl;
+import ro.teamnet.zth.app.service.LocationServiceImpl;
 
 import java.util.List;
+//import ro.teamnet.zth.api.annotations.MyController;
+//import ro.teamnet.zth.api.annotations.MyRequestMethod;
 
 /**
- * @author andreeaf
- * @since 5/10/2015 12:43 PM
+ * Created by Ionutz on 07.05.2015.
  */
-@Controller
-@RequestMapping("/locations")
-public class LocationController {
 
-    private LocationService service = new LocationServiceImpl();
+@Controller
+@RequestMapping(value = "/locations")
+public class LocationController {
 
     @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody
-    List<Location> getAllLocations() {
-        return service.findAll();
+    List<Location> getAllLocation() {
+
+        LocationService locationService = new LocationServiceImpl();
+        return locationService.findAll();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{idLocation}", method = RequestMethod.GET)
     public @ResponseBody
-    Location getOneLocation(@PathVariable("id") Integer idLocation) {
-        return service.findOne(idLocation);
+    Location getOneLocation(@PathVariable("idLocation") String id) {
+
+        LocationService jobService = new LocationServiceImpl();
+        return jobService.findOne(Integer.parseInt(id));
+
     }
 
+    /**
+     * - /employees (POST - create, primeste pe request body un obiect
+     * JSON cu informatiile despre angajatul care se creaza)
+     */
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody Location create(@RequestBody Location location) {
-        return service.create(location);
+    public @ResponseBody Location insertOneLocation(@RequestBody Location location) {
+        LocationService locationService = new LocationServiceImpl();
+        locationService.create(location);
+        return location;
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public @ResponseBody Location update(@RequestBody Location location) {
-        return service.update(location);
+    public @ResponseBody Location updateOneLocation(@RequestBody Location location) {
+        LocationService locationService = new LocationServiceImpl();
+        locationService.update(location);
+        return location;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    @ResponseStatus(value = HttpStatus.OK)
-    public void delete(@PathVariable("id") Integer idLocation) {
-        service.delete(idLocation);
+    @RequestMapping(value = "/{idLocation}", method = RequestMethod.DELETE)
+    //@ResponseStatus(value = HttpStatus.OK)
+    public @ResponseBody
+    String deleteOneLocation(@PathVariable("idLocation") Integer id) {
+        LocationService locationService = new LocationServiceImpl();
+        locationService.delete(id);
+        return "Location deleted";
     }
 }

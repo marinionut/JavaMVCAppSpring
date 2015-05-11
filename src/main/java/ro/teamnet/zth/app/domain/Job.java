@@ -8,22 +8,22 @@ import ro.teamnet.zth.api.annotations.Table;
 public class Job {
 
     @Id(name = "JOB_ID")
-    private Integer id;
+    private String id;
 
     @Column(name = "JOB_TITLE")
     private String jobTitle;
 
     @Column(name = "MIN_SALARY")
-    private Integer minSalary;
+    private String minSalary;
 
     @Column(name = "MAX_SALARY")
-    private Integer maxSalary;
+    private String maxSalary;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,19 +35,19 @@ public class Job {
         this.jobTitle = jobTitle;
     }
 
-    public Integer getMinSalary() {
+    public String getMinSalary() {
         return minSalary;
     }
 
-    public void setMinSalary(Integer minSalary) {
+    public void setMinSalary(String minSalary) {
         this.minSalary = minSalary;
     }
 
-    public Integer getMaxSalary() {
+    public String getMaxSalary() {
         return maxSalary;
     }
 
-    public void setMaxSalary(Integer maxSalary) {
+    public void setMaxSalary(String maxSalary) {
         this.maxSalary = maxSalary;
     }
 

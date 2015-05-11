@@ -10,7 +10,7 @@ import ro.teamnet.zth.api.annotations.Table;
 @Table(name = "departments")
 public class Department {
 
-    @Id(name = "department_id")
+    @Id(name = "departament_id")
     private Integer id;
 
     @Column(name = "department_name")

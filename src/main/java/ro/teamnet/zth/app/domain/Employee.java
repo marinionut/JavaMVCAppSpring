@@ -28,7 +28,7 @@ public class Employee {
     private Date hireDate;
 
     @Column(name = "JOB_ID")
-    private Integer jobId;
+    private String jobId;
 
     @Column(name = "SALARY")
     private BigDecimal salary;
@@ -39,7 +39,7 @@ public class Employee {
     @Column(name = "MANAGER_ID")
     private Integer managerId;
 
-    @Column(name = "DEPARTMENT_ID")
+    @Column(name = "DEPARTAMENT_ID")
     private Integer departmentId;
 
     public Integer getId() {
@@ -90,11 +90,11 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public Integer getJobId() {
+    public String getJobId() {
         return jobId;
     }
 
-    public void setJobId(Integer jobId) {
+    public void setJobId(String jobId) {
         this.jobId = jobId;
     }
 
@@ -173,6 +173,14 @@ public class Employee {
         }
 
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + firstName + '\'' +
+                '}';
     }
 
     @Override
